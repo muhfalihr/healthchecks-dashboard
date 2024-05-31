@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Healthchecks.io</title>
+    <title>Healthchecks Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         /* Colors, dark theme */
@@ -40,12 +40,12 @@
 
         .theme-light {
             background: #FFF;
-            color: #333;
+            color: #333333;
         }
 
         .theme-light #panel > div {
             color: #000;
-            background: #FFF;
+            background: #ffffff;
             border: 2px solid #DDD;
         }
 
@@ -151,8 +151,7 @@
 </head>
 <body class="theme-light">
     <div id="panel">
-        <h1 data-readonly-key="ZBGnXxhBC1WOrCVNKdy3gjeonwdpO5Zy">BelajarHealthchecks</h1>
-        <!-- <h1 data-readonly-key="UKsc30GIblRMKKN4BEPXcBNLa8bx4grU">Uptime Checkers</h1> -->
+        <h1 data-readonly-key="<PING-KEY-READONLY>">Healthchecks</h1>
     </div>
 
     <div class="check-template">
@@ -171,7 +170,7 @@
                     }
                 }
             };
-            httpRequest.open("GET", "https://10.100.1.173:88/api/v2/checks/");
+            httpRequest.open("GET", "https://<IP-SERVER>:<PORT>/api/v2/checks/");
             httpRequest.setRequestHeader("X-Api-Key", key);
             httpRequest.send();
         }
