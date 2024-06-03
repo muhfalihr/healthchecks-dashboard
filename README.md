@@ -11,6 +11,13 @@ A standalone dashboard page showing the status of the checks in your Healthcheck
     pip install gunicorn
     ```
 
+## Cloning this repository
+
+```sh
+git clone https://github.com/muhfalihr/healthchecks-dashboard.git
+cd healthchecks-dashboard
+```
+
 ## How to Use
 
 1. Create a `certs` and `logs` directory. Then go into the `certs` folder.
