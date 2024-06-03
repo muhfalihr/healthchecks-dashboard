@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Healthchecks Dashboard</title>
+    <title>{{ title }}</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
         /* Colors, dark theme */
@@ -151,7 +152,9 @@
 </head>
 <body class="theme-light">
     <div id="panel">
-        <h1 data-readonly-key="<PING-KEY-READONLY>">Healthchecks</h1>
+        {% for project in projects %}
+            <h1 data-readonly-key="{{ project.ping_key_read_only }}">{{ project.name }}</h1>
+        {% endfor %}
     </div>
 
     <div class="check-template">
@@ -170,7 +173,15 @@
                     }
                 }
             };
-            httpRequest.open("GET", "https://<IP-SERVER>:<PORT>/api/v2/checks/");
+
+            var url;
+            {% if domain_name %}
+                url = `https://{{ domain_name }}/api/v2/checks/`;
+            {% else %}
+                url = `https://{{ host }}:{{ port }}/api/v2/checks/`;
+            {% endif %}
+
+            httpRequest.open("GET", url);
             httpRequest.setRequestHeader("X-Api-Key", key);
             httpRequest.send();
         }
